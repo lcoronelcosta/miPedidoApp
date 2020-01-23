@@ -97,11 +97,11 @@ function getSubcategorias(id){
 		const contenedor = document.getElementById('categorias');
 		contenedor.innerHTML += `<div class="col-md-12">
 										<div class="section-title">
-											<h3 class="title">Categorias</h3>
+											<h3 class="title">Subcategorias</h3>
 										</div>
 									</div>`;
 		myJson.data.map((dato) => {
-            contenedor.innerHTML += `<div class="col-md-4 col-xs-6 btn" onclick="getSubcategorias(${dato.id})">
+            contenedor.innerHTML += `<div class="col-md-4 col-xs-6 btn" onclick="getProductos(${dato.id})">
             							<div class="shop">
             								<div class="shop-img">
             									<img src="${dato.imagen}" alt="">
@@ -118,6 +118,95 @@ function getSubcategorias(id){
 	});
 
 }
+
+
+function getProductos(id){
+	var myHeaders = new Headers();
+	var miInit = { method: 'GET',
+               mode: 'cors',
+               headers: myHeaders,
+               cache: 'default' };
+
+	fetch('http://hierrodiseno.com/mipedido/public/api/getproductos?id='+id,miInit)
+	.then(function(response) {
+    return response.json();
+	})
+
+	.then(function(myJson) {
+		$('#categorias').html("");
+		const contenedor = document.getElementById('categorias');
+		contenedor.innerHTML += `<div class="col-md-12">
+										<div class="section-title">
+											<h3 class="title">Productos</h3>
+										</div>
+									</div>`;
+		myJson.data.map((dato) => {
+            contenedor.innerHTML += `<div class="col-md-3 col-xs-6">
+										<div class="product">
+											<div class="product-img">
+												<img src="${dato.imagen}" alt="">
+											</div>
+											<div class="product-body">
+												<h3 class="product-name"><a href="#">${dato.nombre}</a></h3>
+												<h4 class="product-price">$ ${dato.precio}</h4>
+												
+												<div class="product-btns">
+													<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">Favorito</span></button>
+													<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">Mas info</span></button>
+												</div>
+											</div>
+											<div class="add-to-cart">
+												<button class="add-to-cart-btn" onclick="getProducto(${dato.id})"><i class="fa fa-shopping-cart"></i> add to cart</button>
+											</div>
+										</div>
+									</div>`;
+        });
+
+	    console.log(myJson);
+	});
+
+}
+
+
+function getProducto(id){
+	var myHeaders = new Headers();
+	var miInit = { method: 'GET',
+               mode: 'cors',
+               headers: myHeaders,
+               cache: 'default' };
+
+	fetch('http://hierrodiseno.com/mipedido/public/api/getproducto?id='+id,miInit)
+	.then(function(response) {
+    return response.json();
+	})
+
+	.then(function(dato) {
+		const contenedor = document.getElementById('cart-list');
+		//myJson.data.map((dato) => {
+            contenedor.innerHTML += `<div class="product-widget" id="producto-${dato.id}">
+									    <div class="product-img">
+									        <img src="${dato.imagen}" alt="">
+									    </div>
+									    <div class="product-body">
+									        <h3 class="product-name"><a href="#">${dato.nombre}</a></h3>
+									        <h4 class="product-price"><span class="qty">1x</span>${dato.precio}</h4>
+									    </div>
+									    <button class="delete" onclick="deleteProductoCart(${dato.id})"><i class="fa fa-close"></i></button>
+									</div>`;
+        //});
+
+	    console.log(dato);
+	});
+
+}
+
+function deleteProductoCart(id){
+	console.log(id);
+	$("#producto-"+id).remove();
+}
+
+					
+
 
 
 
