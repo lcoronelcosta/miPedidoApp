@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
          <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-        <title>Electro - HTML Ecommerce Template</title>
+        <title>Mi Pedido - HD</title>
 
         <!-- Google font -->
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
@@ -71,48 +71,27 @@
                         <!-- /LOGO -->
 
                         <!-- ACCOUNT -->
-                        <div class="col-md-3 clearfix">
+                        <div class="col-md-3 col-sm-12 clearfix">
                             <div class="header-ctn">
                                 <!-- Cart -->
                                 <div class="dropdown">
                                     <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                                         <i class="fa fa-shopping-cart"></i>
                                         <span>You Cart</span>
-                                        <!--<div class="qty">3</div>-->
+                                        <div class="qty" id="qty">0</div>
                                     </a>
                                     
-                                    <div class="cart-dropdown">
+                                    <div class="cart-dropdown" style="right: -123%">
                                         <div class="cart-list" id="cart-list">
-                                            <!--
-                                            <div class="product-widget">
-                                                <div class="product-img">
-                                                    <img src="./img/product01.png" alt="">
-                                                </div>
-                                                <div class="product-body">
-                                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                                    <h4 class="product-price"><span class="qty">1x</span>$980.00</h4>
-                                                </div>
-                                                <button class="delete"><i class="fa fa-close"></i></button>
-                                            </div>
-
-                                            <div class="product-widget">
-                                                <div class="product-img">
-                                                    <img src="./img/product02.png" alt="">
-                                                </div>
-                                                <div class="product-body">
-                                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                                    <h4 class="product-price"><span class="qty">3x</span>$980.00</h4>
-                                                </div>
-                                                <button class="delete"><i class="fa fa-close"></i></button>
-                                            </div>-->
+                                            <!--Carga mediante jQuery-->
                                         </div>
                                         <div class="cart-summary">
-                                            <small>0 Item(s) selected</small>
-                                            <h5>SUBTOTAL: $0.00</h5>
+                                            <small id="item-seleccionados">0 Item(s) selected</small>
+                                            <h5 id="subtotal-items">SUBTOTAL: $0.00</h5>
                                         </div>
                                         <div class="cart-btns">
                                             <a href="#">Ver Cart</a>
-                                            <a href="#">Genera QR  <i class="fa fa-arrow-circle-right"></i></a>
+                                            <a onclick="generaQR();">Genera QR  <i class="btn fa fa-arrow-circle-right"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -146,7 +125,7 @@
                 <div id="responsive-nav">
                     <!-- NAV -->
                     <ul class="main-nav nav navbar-nav">
-                        <li class="active"><a href="#">Home</a></li>
+                        <li class="active"><a href="index.html">Home</a></li>
                          <!--<li><a href="#">Hot Deals</a></li>
                         <li><a href="#">Categories</a></li>
                         <li><a href="#">Laptops</a></li>

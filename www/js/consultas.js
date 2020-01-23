@@ -1,13 +1,15 @@
 $(document).ready(function(){
+	localStorage.clear();
 	/*var useragent = navigator.userAgent;
 	var secretKey = 'ABCDEF123456';
 	var f = new Date();
 	var time = f.getFullYear() + "-" + (f.getMonth() +1) + "-" + f.getDate();
 	var myHeaders = new Headers();
 	var md5 = CryptoJS.AES.encrypt(secretKey, time, useragent);*/
-	var myHeaders = new Headers();
+	myHeaders = new Headers();
+
+
 	var miInit = { method: 'GET',
-               mode: 'cors',
                headers: myHeaders,
                cache: 'default' };
 
@@ -181,9 +183,16 @@ function getProducto(id){
 	})
 
 	.then(function(dato) {
+		var cantidad = aumentarCarrito();
+		var subtotal = aumentarSubtotal(dato.precio);
+		console.log(subtotal);
+		$('#qty').html(cantidad);
+		$('#item-seleccionados').html(cantidad + ' Item(s) selected');
+		$('#subtotal-items').html('SUBTOTAL: $' + subtotal);
 		const contenedor = document.getElementById('cart-list');
 		//myJson.data.map((dato) => {
             contenedor.innerHTML += `<div class="product-widget" id="producto-${dato.id}">
+            							<input type="hidden" value="${dato.precio}" id="precio-${dato.id}" />
 									    <div class="product-img">
 									        <img src="${dato.imagen}" alt="">
 									    </div>
@@ -191,7 +200,7 @@ function getProducto(id){
 									        <h3 class="product-name"><a href="#">${dato.nombre}</a></h3>
 									        <h4 class="product-price"><span class="qty">1x</span>${dato.precio}</h4>
 									    </div>
-									    <button class="delete" onclick="deleteProductoCart(${dato.id})"><i class="fa fa-close"></i></button>
+									    <button class="delete" onclick="deleteProductoCart(${dato.id}, ${dato.precio})"><i class="fa fa-close"></i></button>
 									</div>`;
         //});
 
@@ -202,11 +211,53 @@ function getProducto(id){
 
 function deleteProductoCart(id){
 	console.log(id);
+	var cantidad_actual = parseInt(localStorage.getItem("cantidad"));
+	var total = cantidad_actual - 1;
+	localStorage.setItem("cantidad", total);
+	var cantidad = parseInt(localStorage.getItem("cantidad"));
 	$("#producto-"+id).remove();
+	$('#qty').html(cantidad);
+	$('#item-seleccionados').html(cantidad + ' Item(s) selected');
+
+	var total = parseFloat(localStorage.getItem("subtotal")) - parseFloat($("#precio-"+id).val());
+	localStorage.setItem("subtotal", total);
+	$('#subtotal-items').html('SUBTOTAL: $' + total);
+	
+}
+
+function aumentarCarrito(){
+	if (localStorage.getItem("cantidad") === null) {
+			localStorage.setItem("cantidad", 1);
+	}
+	else{
+		var cantidad_actual = parseInt(localStorage.getItem("cantidad"));
+		var total = cantidad_actual + 1;
+		localStorage.setItem("cantidad", total);
+	}
+	var cantidad = parseInt(localStorage.getItem("cantidad"));
+	return cantidad;
+}
+
+function aumentarSubtotal(precio){
+	console.log(precio);
+	if (localStorage.getItem("subtotal") === null) {
+		localStorage.setItem("subtotal", precio);
+	}
+	else{
+		var subtotal_actual = parseFloat(localStorage.getItem("subtotal"));
+		var total = subtotal_actual + parseFloat(precio);
+		localStorage.setItem("subtotal", total);
+	}
+	var subtotal = parseFloat(localStorage.getItem("subtotal"));
+	return subtotal;
 }
 
 					
-
+function generaQR(){
+	jQuery(function(){
+		jQuery('#categorias').qrcode("http://espol.edu.ec");
+	})
+}
 
 
 
