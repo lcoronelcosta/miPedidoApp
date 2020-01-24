@@ -123,6 +123,7 @@ function getSubcategorias(id){
 
 
 function getProductos(id){
+
 	var myHeaders = new Headers();
 	var miInit = { method: 'GET',
                mode: 'cors',
@@ -143,6 +144,8 @@ function getProductos(id){
 										</div>
 									</div>`;
 		myJson.data.map((dato) => {
+			//var producto = JSON.stringify(dato);
+			var producto = JSON.stringify(dato).replace(/\"/g,"&quot;")
             contenedor.innerHTML += `<div class="col-md-3 col-xs-6">
 										<div class="product">
 											<div class="product-img">
@@ -158,7 +161,7 @@ function getProductos(id){
 												</div>
 											</div>
 											<div class="add-to-cart">
-												<button class="add-to-cart-btn" onclick="getProducto(${dato.id})"><i class="fa fa-shopping-cart"></i> add to cart</button>
+												<button class="add-to-cart-btn" onclick="agregarCarrito(${producto})"><i class="fa fa-shopping-cart"></i> add to cart</button>
 											</div>
 										</div>
 									</div>`;
@@ -168,6 +171,48 @@ function getProductos(id){
 	});
 
 }
+
+
+function agregarCarrito(dato){
+	dato = JSON.stringify(dato);
+	console.log("Dato2", dato);
+	const contenedor = document.getElementById('cart-list');
+	contenedor.innerHTML += `<div class="product-widget" id="producto-${dato.id}">
+            							<input type="hidden" value="${dato.precio}" id="precio-${dato.id}" />
+									    <div class="product-img">
+									        <img src="${dato.imagen}" alt="">
+									    </div>
+									    <div class="product-body">
+									        <h3 class="product-name"><a href="#">${dato.nombre}</a></h3>
+									        <h4 class="product-price"><span class="qty">1x</span>${dato.precio}</h4>
+									    </div>
+									    <button onclick="deleteProductoCart(${dato.id}, ${dato.precio})" class="delete" "><i class="fa fa-close"></i></button>
+									</div>`;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 function getProducto(id){
