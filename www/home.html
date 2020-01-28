@@ -11,6 +11,7 @@
     <script type="text/javascript" src="mobileui/mobileui.js"></script>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/consultas.js"></script>
     <style>
       #titleDiscoveryNow {
         font-family: 'Chewy', cursive;
@@ -22,8 +23,8 @@
     </style>
 </head>
 
-    <body class="padding grey-100 has-header">
-  <div class="menu teal-900 cover blend-multiply" id="menuDiscover" style="background-image:url(/img/nature1.jpg)">
+    <body class="padding grey-100 has-header has-sub-header">
+  <div class="menu teal-900 blend-multiply" id="menuDiscover" style="background-image:url(/img/nature1.jpg)">
     <div class="cover align-center">
       <img class="avatar circle border-white shadow" src="/img/33.jpg">
       <h1 class="text-teal-300">Carter Hudson</h1>
@@ -34,13 +35,13 @@
         <div class="left">
           <i class="icon ion-ios-heart-outline grey-300"></i>
         </div>
-        <h1 class="text-grey-300">My Discoveries</h1>
+        <h1 class="text-grey-300">Mi Pedidos</h1>
       </a>
       <a class="item space-small">
         <div class="left">
           <i class="icon ion-ios-flame-outline grey-300"></i>
         </div>
-        <h1 class="text-grey-300">Trending</h1>
+        <h1 class="text-grey-300">Mis QR</h1>
         <div class="right">
           <span class="text-small border-red text-red radius padding">12</span>
         </div>
@@ -49,13 +50,13 @@
         <div class="left">
           <i class="icon ion-ios-location-outline grey-300"></i>
         </div>
-        <h1 class="text-grey-300">Places</h1>
+        <h1 class="text-grey-300">Categorias</h1>
       </a>
       <a class="item space-small">
         <div class="left">
           <i class="icon ion-ios-person-outline grey-300"></i>
         </div>
-        <h1 class="text-grey-300">People</h1>
+        <h1 class="text-grey-300">Promociones</h1>
         <div class="right">
           <span class="text-small border-green text-green radius padding">7</span>
         </div>
@@ -64,7 +65,7 @@
         <div class="left">
           <i class="icon ion-ios-chatbubble-outline grey-300"></i>
         </div>
-        <h1 class="text-grey-300">Notifications</h1>
+        <h1 class="text-grey-300">Notificaciones</h1>
       </a>
     </div>
   </div>
@@ -72,57 +73,16 @@
     <div class="left">
       <button class="icon ion-navicon-round" onclick="openMenu('menuDiscover')"></button>
     </div>
-    <h1 class="title align-center">My Discoveries</h1>
+    <h1 class="title align-center">Mi Pedidos</h1>
     <div class="right">
       <span class="icon-badge text-small red radius padding">3</span>
       <button class="icon ion-earth"></button>
     </div>
   </div>
   <div class="space"></div>
-  <div class="list white no-border radius shadow" style="margin-top: -70%;">
-    <div class="item">
-      <div class="left">
-        <img class="avatar radius" src="/img/33.jpg" />
-      </div>
-      <h2 class="strong">Carter Hudson</h2>
-      <p class="text-red-400">@carterhudson</p>
-      <p class="text-grey">3min ago</p>
-      <div class="right">
-        <button class="white icon ion-ios-heart-outline text-red-400"> 23</button>
-      </div>
-    </div>
-    <div class="item full">
-      <img src="/img/nature2.jpg"/>
-    </div>
-    <div class="item text-grey-600">
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-        et dolore magna aliqua.
-      </p>
-    </div>
-  </div>
-  <div class="space"></div>
-  <div class="list white no-border radius shadow">
-    <div class="item">
-      <div class="left">
-        <img class="avatar radius" src="/img/33.jpg" />
-      </div>
-      <h2 class="strong">Carter Hudson</h2>
-      <p class="text-red-400">@carterhudson</p>
-      <p class="text-grey">3min ago</p>
-      <div class="right">
-        <button class="white icon ion-ios-heart-outline text-red-400"> 23</button>
-      </div>
-    </div>
-    <div class="item full">
-      <img src="/img/nature2.jpg"/>
-    </div>
-    <div class="item text-grey-600">
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-        et dolore magna aliqua.
-      </p>
-    </div>
-  </div>
+  
+<div id="categorias">
+  
+</div>
 </body>
 </html>

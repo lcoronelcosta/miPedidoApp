@@ -27,17 +27,18 @@ $(document).ready(function(){
 										</div>
 									</div>`;
 		myJson.data.map((categoria) => {
-            contenedor.innerHTML += `<div class="col-md-4 col-xs-6 btn" onclick="getSubcategorias(${categoria.id})">
-            							<div class="shop">
-            								<div class="shop-img">
-            									<img src="${categoria.imagen}" alt="">
-            								</div>
-            								<div class="shop-body">
-            									<h3>${categoria.nombre}</h3>	
-            								<a class="cta-btn">Pedir <i class="fa fa-arrow-circle-right"></i></a>
-            							</div>
-            						</div>`;
+            contenedor.innerHTML += `<div class="space"></div>
+  
+<div class="cover blend-soft-light align-center blue-800" style="background-image:url(${categoria.imagen})">
+  <div class="space"></div>
+  <h1 class="text-huge text-white text-light">Event On This Day</h1>
+  <p class="text-small text-white text-light">
+    ${categoria.nombre}
+  </p>
+  <div class="space"></div>
+</div>`;
         });
+
 
 		
 	    console.log(myJson);
