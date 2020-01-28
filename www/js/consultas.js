@@ -1,5 +1,5 @@
-$(document).ready(function(){
-	window.localStorage.clear();
+window.onload = function() {
+  window.localStorage.clear();
 	/*var useragent = navigator.userAgent;
 	var secretKey = 'ABCDEF123456';
 	var f = new Date();
@@ -7,6 +7,45 @@ $(document).ready(function(){
 	var myHeaders = new Headers();
 	var md5 = CryptoJS.AES.encrypt(secretKey, time, useragent);*/
 	myHeaders = new Headers();
+
+
+	var miInit = { method: 'GET',
+               headers: myHeaders,
+               cache: 'default' };
+
+	fetch('http://mipedido.hierrodiseno.com/api/getcategorias', miInit)
+	.then(function(response) {
+    return response.json();
+	})
+
+	.then(function(myJson) {
+
+		const contenedor = document.getElementById('categorias');
+		myJson.data.map((categoria) => {
+            contenedor.innerHTML += `<div class="space"></div> 
+										<div onclick="openPage('subcategorias', {id:'${categoria.id}'}, functionOpenSubcategorias)" class="cover blend-soft-light align-center blue-800" style="background-image:url(${categoria.imagen})">
+									  		<div class="space"></div>
+									  		<h1 class="text-huge text-white text-light">${categoria.nombre}</h1>
+									  	<div class="space"></div>
+									</div>`;
+        });
+
+
+		
+	    console.log(myJson);
+	});
+};
+
+
+/*$(document).ready(function(){
+	window.localStorage.clear();
+	/*var useragent = navigator.userAgent;
+	var secretKey = 'ABCDEF123456';
+	var f = new Date();
+	var time = f.getFullYear() + "-" + (f.getMonth() +1) + "-" + f.getDate();
+	var myHeaders = new Headers();
+	var md5 = CryptoJS.AES.encrypt(secretKey, time, useragent);*/
+	/*myHeaders = new Headers();
 
 
 	var miInit = { method: 'GET',
@@ -45,7 +84,7 @@ $(document).ready(function(){
 	});
 
 
-});
+});*/
 
 /*function getSubcategorias(id){
 
