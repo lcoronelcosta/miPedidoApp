@@ -1,206 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="mobileui/style.css">
+    <meta name="format-detection" content="telephone=no">
+    <meta charset="utf-8">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <title>Apache Cordova</title>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="mobileui/mobileui.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <style>
+      #titleDiscoveryNow {
+        font-family: 'Chewy', cursive;
+        font-size: 45px;
+        line-height: 24px;
+        z-index: 33;
+        position: relative;
+    }
+    </style>
+</head>
 
-        <title>Mi Pedido - HD</title>
-
-        <!-- Google font -->
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
-
-        <!-- Bootstrap -->
-        <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"/>
-
-        <!-- Slick -->
-        <link type="text/css" rel="stylesheet" href="css/slick.css"/>
-        <link type="text/css" rel="stylesheet" href="css/slick-theme.css"/>
-
-        <!-- nouislider -->
-        <link type="text/css" rel="stylesheet" href="css/nouislider.min.css"/>
-
-        <!-- Font Awesome Icon -->
-        <link rel="stylesheet" href="css/font-awesome.min.css">
-
-        <!-- Custom stlylesheet -->
-        <link type="text/css" rel="stylesheet" href="css/style.css"/>
-
-        <!-- Crypto -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
-        <script src="js/jquery.min.js"></script>
-        <script src="js/jquery.zoom.min.js"></script>
-
-        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
-
-    </head>
-    <body>
-        <!-- HEADER -->
-        <header>
-            <!-- TOP HEADER -->
-            <div id="top-header">
-                <div class="container">
-                    <ul class="header-links pull-right">
-                        <li><a href="#"><i class="fa fa-user-o"></i> Mi Cuenta</a></li>
-                    </ul>
-                </div>
-            </div>
-            <!-- /TOP HEADER -->
-
-            <!-- MAIN HEADER -->
-            <div id="header">
-                <!-- container -->
-                <div class="container">
-                    <!-- row -->
-                    <div class="row">
-                        <!-- LOGO -->
-                        <div class="col-md-3">
-                            <div class="header-logo">
-                                <a href="#" class="logo">
-                                    <!--<img src="./img/logo.png" alt="">-->
-                                    <h4 style="color: white">MiPedidos</h4>
-                                </a>
-                            </div>
-                        </div>
-                        <!-- /LOGO -->
-
-                        <!-- ACCOUNT -->
-                        <div class="col-md-3 col-sm-12 clearfix">
-                            <div class="header-ctn">
-                                <!-- Cart -->
-                                <div class="dropdown">
-                                    <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-                                        <i class="fa fa-shopping-cart"></i>
-                                        <span>You Cart</span>
-                                        <div class="qty" id="qty">0</div>
-                                    </a>
-                                    
-                                    <div class="cart-dropdown" style="right: -123%">
-                                        <div class="cart-list" id="cart-list">
-                                            <!--Carga mediante jQuery-->
-                                        </div>
-                                        <div class="cart-summary">
-                                            <small id="item-seleccionados">0 Item(s) selected</small>
-                                            <h5 id="subtotal-items">SUBTOTAL: $0.00</h5>
-                                        </div>
-                                        <div class="cart-btns">
-                                            <a onclick="verCarro();">Ver Cart<i class="btn fa fa-arrow-circle-right"></i></a>
-                                            <a onclick="generaQR();">Genera QR  <i class="btn fa fa-arrow-circle-right"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- /Cart -->
-
-                                <!-- Menu Toogle -->
-                                <div class="menu-toggle">
-                                    <a href="#">
-                                        <i class="fa fa-bars"></i>
-                                        <span>Menu</span>
-                                    </a>
-                                </div>
-                                <!-- /Menu Toogle -->
-                            </div>
-                        </div>
-                        <!-- /ACCOUNT -->
-                    </div>
-                    <!-- row -->
-                </div>
-                <!-- container -->
-            </div>
-            <!-- /MAIN HEADER -->
-        </header>
-        <!-- /HEADER -->
-
-        <!-- NAVIGATION -->
-        <nav id="navigation">
-            <!-- container -->
-            <div class="container">
-                <!-- responsive-nav -->
-                <div id="responsive-nav">
-                    <!-- NAV -->
-                    <ul class="main-nav nav navbar-nav">
-                        <li class="active"><a href="index.html">Home</a></li>
-                         <!--<li><a href="#">Hot Deals</a></li>
-                        <li><a href="#">Categories</a></li>
-                        <li><a href="#">Laptops</a></li>
-                        <li><a href="#">Smartphones</a></li>
-                        <li><a href="#">Cameras</a></li>
-                        <li><a href="#">Accessories</a></li>-->
-                    </ul>
-                    <!-- /NAV -->
-                </div>
-                <!-- /responsive-nav -->
-            </div>
-            <!-- /container -->
-        </nav>
-        <!-- /NAVIGATION -->
-
-        <!-- SECTION -->
-        <div class="section">
-            <!-- container -->
-            <div class="container">
-                <!-- row -->
-                <div class="row" id="categorias">
-
-                    
-                </div>
-                <!-- /row -->
-            </div>
-            <!-- /container -->
-        </div>
-        <!-- /SECTION -->
-
-
-        
-
-        <!-- NEWSLETTER -->
-        <div id="newsletter" class="section">
-            <!-- container -->
-            <div class="container">
-                <!-- row -->
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="newsletter">
-                            <p>Sign Up for the <strong>NEWSLETTER</strong></p>
-                            <form>
-                                <input class="input" type="email" placeholder="Enter Your Email">
-                                <button class="newsletter-btn"><i class="fa fa-envelope"></i> Suscribirse</button>
-                            </form>
-                            <ul class="newsletter-follow">
-                                <li>
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="fa fa-instagram"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="fa fa-pinterest"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!-- /row -->
-            </div>
-            <!-- /container -->
-        </div>
-        <!-- /NEWSLETTER -->
-
-        <!-- jQuery Plugins -->
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/slick.min.js"></script>
-        <script src="js/nouislider.min.js"></script>
-        <script src="js/main.js"></script>
-        <script src="js/consultas.js"></script>
-
+    <body class="cover vertical-align-center blue-grey-900 align-center blend-soft-light">
+      <div class="space"></div>
+      <div class="space"></div>
+      <div class="space"></div>
+      <p class="text-white">Bienvenidos</p>
+      <h1 id="titleDiscoveryNow" class="text-blue">MiPedido</h1>
+      <div class="space"></div>
+      <div class="space"></div>
+      <div class="row">
+        <div class="col-90 col-center">
+          <div class="list no-border opacity-60">
+            <div class="item icon ion-android-mail border-grey border-bottom">
+              <input class="placeholder-white text-white" type="email" placeholder="Email">
+          </div>
+          <div class="item icon ion-android-lock border-grey border-bottom">
+              <input class="placeholder-white text-white" type="password" placeholder="Password">
+          </div>
+      </div>
+      <div class="space"></div>
+      <div class="space"></div>
+      <a href="home.html"> <button class="border-blue text-blue full">INGRESAR</button></a> 
+    </div>
+    </div>
+    <div class="header bottom gradient">
+        <button class="text-grey">REGISTRATE</button>
+    </div>
     </body>
 </html>

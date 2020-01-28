@@ -13,7 +13,7 @@ $(document).ready(function(){
                headers: myHeaders,
                cache: 'default' };
 
-	fetch('http://hierrodiseno.com/mipedido/public/api/getcategorias', miInit)
+	fetch('http://mipedido.hierrodiseno.com/api/getcategorias', miInit)
 	.then(function(response) {
     return response.json();
 	})
@@ -89,7 +89,7 @@ function getSubcategorias(id){
                headers: myHeaders,
                cache: 'default' };
 
-	fetch('http://hierrodiseno.com/mipedido/public/api/getsubcategorias?id='+id,miInit)
+	fetch('http://mipedido.hierrodiseno.com/api/getsubcategorias?id='+id,miInit)
 	.then(function(response) {
     return response.json();
 	})
