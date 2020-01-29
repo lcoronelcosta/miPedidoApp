@@ -12,19 +12,21 @@ window.onload = function() {
 	var myHeaders = new Headers();
 	var md5 = CryptoJS.AES.encrypt(secretKey, time, useragent);*/
 	myHeaders = new Headers();
-
+	/*myHeaders.append('Access-Control-Allow-Origin', '*');
+	myHeaders.append('Accept', 'application/json');
+	myHeaders.append('Access-Control-Allow-Headers', '*');*/
 
 	var miInit = { method: 'GET',
                headers: myHeaders,
-               cache: 'default' };
+               cache: 'default'
+           	};
 
 	fetch('http://mipedido.hierrodiseno.com/api/getcategorias', miInit)
 	.then(function(response) {
+		console.log(response);
     return response.json();
 	})
-
 	.then(function(myJson) {
-
 		const contenedor = document.getElementById('categorias');
 		myJson.data.map((categoria) => {
             contenedor.innerHTML += `<div class="space"></div> 
@@ -34,9 +36,25 @@ window.onload = function() {
 									  	<div class="space"></div>
 									</div>`;
         });
+	    console.log(myJson);
+	});
 
 
-		
+	fetch('http://mipedido.hierrodiseno.com/api/getbanners', miInit)
+	.then(function(response) {
+		console.log(response);
+    return response.json();
+	})
+	.then(function(myJson) {
+		const contenedor = document.getElementById('banners');
+		myJson.data.map((banner) => {
+            contenedor.innerHTML += `<div class="swiper-slide text-white align-center cover black-opacity-30 blend-soft-light" style="background-image:url(${banner.imagen})">
+							            <h2>${banner.titulo}</h2>
+							            <div class="bottom margin-bottom text-shadow padding">
+							              ${banner.descripcion}
+							            </div>
+							         </div>`;
+        });
 	    console.log(myJson);
 	});
 };
