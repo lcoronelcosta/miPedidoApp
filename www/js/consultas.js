@@ -1,3 +1,8 @@
+document.addEventListener('openPage', function(e){
+	
+});
+
+
 window.onload = function() {
   window.localStorage.clear();
 	/*var useragent = navigator.userAgent;

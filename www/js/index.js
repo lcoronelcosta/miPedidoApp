@@ -1,40 +1,39 @@
 document.addEventListener('openPage', function(e){
-	var url = "home.html";
-	$(location).attr('href',url);
-})
+	
+});
+
+function functionOpenContact(params){
+  document.getElementById('name').value = params.name;
+}
 
 function functionOpenSubcategorias(params){
-  $id = params.id;
-  $.ajax({
-        type: 'get',
-        url: 'http://hierrodiseno.com/mipedido/public/api/getsubcategorias?id='+id,
-        data: id,
-        dataType: "json",
-        beforeSend: function() {
-            //$(".loading").css("display", "block");
-        },
-        success: function(data) {
-            if(data.error){
-                const contenedor = document.getElementById('sub-categorias');
-                myJson.data.map((data) => {
-	            contenedor.innerHTML += `<div class="col-md-4 col-xs-6 btn" onclick="getSubcategorias(${categoria.id})">
-	            							<div class="shop">
-	            								<div class="shop-img">
-	            									<img src="${categoria.imagen}" alt="">
-	            								</div>
-	            								<div class="shop-body">
-	            									<h3>${categoria.nombre}</h3>	
-	            								<a class="cta-btn">Pedir <i class="fa fa-arrow-circle-right"></i></a>
-	            							</div>
-	            						</div>`;
-	        	});
-            }
-            else{
-            }
+    var id = params.id;
+    myHeaders = new Headers();
 
-        },
-        error: function() {
-            
-        }
+
+    var miInit = { method: 'GET',
+               headers: myHeaders,
+               cache: 'default' };
+
+    fetch('http://mipedido.hierrodiseno.com/api/getsubcategorias?id='+id, miInit)
+    .then(function(response) {
+    return response.json();
+    })
+
+    .then(function(myJson) {
+
+        const contenedor = document.getElementById('list-subcategorias');
+        myJson.data.map((categoria) => {
+        contenedor.innerHTML += `<div class="space"></div> 
+                                        <div onclick="openPage('subcategorias', {id:'${categoria.id}'}, functionOpenSubcategorias)" class="cover align-center" style="background-image:url(${categoria.imagen})">
+                                            <div class="space"></div>
+                                            <h1 class="text-huge text-white text-light">${categoria.nombre}</h1>
+                                        <div class="space"></div>
+                                    </div>`;
+        });
+
+
+        
+        console.log(myJson);
     });
 }
