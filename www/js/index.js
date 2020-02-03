@@ -16,7 +16,8 @@ function functionOpenSubcategorias(params){
                cache: 'default' 
            	};
 
-    fetch('http://mipedido.hierrodiseno.com/api/getsubcategorias?id='+id, miInit)
+    //fetch('http://mipedido.hierrodiseno.com/api/getsubcategorias?id='+id, miInit)
+    fetch('http://localhost:8000/api/getsubcategorias?id='+id, miInit)
     .then(function(response) {
     return response.json();
     })
@@ -49,7 +50,8 @@ function functionOpenProductos(params){
                headers: myHeaders,
                cache: 'default' };
 
-    fetch('http://mipedido.hierrodiseno.com/api/getproductos?id_subcategoria='+id, miInit)
+    //fetch('http://mipedido.hierrodiseno.com/api/getproductos?id_subcategoria='+id, miInit)
+    fetch('http://localhost:8000/api/getproductos?id_subcategoria='+id, miInit)
     .then(function(response) {
     return response.json();
     })
@@ -73,35 +75,56 @@ function functionOpenProductos(params){
     });
 }
 
-function functionOpenProducto(params){
-    var id = params.id;
-    myHeaders = new Headers();
 
+function validaForm() {
+    var email = document.getElementById('email').value;
+    var password = document.getElementById('password').value;
+    if (!email.length && !password.length) {
+        swal("Por favor ingrese los datos!");
+    }else if (!email.length) {
+        swal("Por favor ingrese su email!");
+    }else if(!password.length){
+        swal("Por favor ingrese su password!");
+    }else{
+        //swal("EXITO!");
+        validarUser(email, password);
+    }
+    
+}
+
+function validarUser(email, password) {
+    myHeaders = new Headers();
 
     var miInit = { method: 'GET',
                headers: myHeaders,
                cache: 'default' };
 
-    fetch('http://mipedido.hierrodiseno.com/api/getproducto?id='+id, miInit)
+    //fetch('http://mipedido.hierrodiseno.com/api/getproducto?id='+id, miInit)
+    fetch('http://localhost:8000/api/getuser?email='+email, miInit)
     .then(function(response) {
-    return response.json();
+        return response.json();
     })
 
     .then(function(myJson) {
 
-        const contenedor = document.getElementById('productos-details');
-        myJson.data.map((producto) => {
-        contenedor.innerHTML += `<div class="item">
-							        <div class="left"><img class="avatar circle" src="${producto.imagen}"></div>
-							        <h2>${producto.nombre}</h2>
-							     </div>
-							     <div class="item full"><img src="${producto.imagen}"></div>
-							     <div class="item text-grey-600">${producto.descripcion}</div>
-							     <div class="item">
-								    <input type="number" placeholder="Cantidad">
-								    <button class="blue radius full">Agregar a Pedido</button>
-								 </div>`;
-        });
+        if (Object.keys(myJson).length <= 0) {
+            swal("Usuario no registrado!");
+        }
+        else{
+            //const contenedor = document.getElementById('productos-details');
+            myJson.data.map((user) => {
+                console.log('1', password);
+                console.log('2', user.clave);
+                if (user.clave != password ) {
+                    swal("Password Incorrecto!");
+                }
+                else{
+                    localStorage.setItem('datos_user', JSON.stringify(myJson));
+                    window.location='home.html';
+                }
+            
+            });
+        }
         console.log(myJson);
     });
 }
