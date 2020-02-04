@@ -212,8 +212,6 @@ function agregarCarrito(id, producto){
         if (cant = 0) {
             backPage();
         }
-
-      
     });
 }
 
