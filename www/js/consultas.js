@@ -33,8 +33,8 @@ window.onload = function() {
                headers: myHeaders,
                cache: 'default'
            	};
-	//fetch('http://mipedido.hierrodiseno.com/api/getcategorias', miInit)
-	fetch('http://localhost:8000/api/getcategorias', miInit)
+	fetch('http://mipedido.hierrodiseno.com/api/getcategorias', miInit)
+	//fetch('http://localhost:8000/api/getcategorias', miInit)
 	.then(function(response) {
 		console.log(response);
     return response.json();
@@ -53,8 +53,8 @@ window.onload = function() {
 	});
 
 
-	//fetch('http://mipedido.hierrodiseno.com/api/getbanners', miInit)
-	fetch('http://localhost:8000/api/getbanners', miInit)
+	fetch('http://mipedido.hierrodiseno.com/api/getbanners', miInit)
+	//fetch('http://localhost:8000/api/getbanners', miInit)
 	.then(function(response) {
 		console.log(response);
     return response.json();
@@ -92,8 +92,8 @@ function functionOpenSubcategorias(params){
                cache: 'default' 
            	};
 
-    //fetch('http://mipedido.hierrodiseno.com/api/getsubcategorias?id='+id, miInit)
-    fetch('http://localhost:8000/api/getsubcategorias?id='+id, miInit)
+    fetch('http://mipedido.hierrodiseno.com/api/getsubcategorias?id='+id, miInit)
+    //fetch('http://localhost:8000/api/getsubcategorias?id='+id, miInit)
     .then(function(response) {
     return response.json();
     })
@@ -126,8 +126,8 @@ function functionOpenProductos(params){
                headers: myHeaders,
                cache: 'default' };
 
-    //fetch('http://mipedido.hierrodiseno.com/api/getproductos?id_subcategoria='+id, miInit)
-    fetch('http://localhost:8000/api/getproductos?id_subcategoria='+id, miInit)
+    fetch('http://mipedido.hierrodiseno.com/api/getproductos?id_subcategoria='+id, miInit)
+    //fetch('http://localhost:8000/api/getproductos?id_subcategoria='+id, miInit)
     .then(function(response) {
     return response.json();
     })
@@ -161,8 +161,8 @@ function functionOpenProducto(params){
                cache: 'default'
                 };
 
-    //fetch('http://mipedido.hierrodiseno.com/api/getproducto?id='+id, miInit)
-    fetch('http://localhost:8000/api/getproducto?id='+id, miInit)
+    fetch('http://mipedido.hierrodiseno.com/api/getproducto?id='+id, miInit)
+    //fetch('http://localhost:8000/api/getproducto?id='+id, miInit)
     .then(function(response) {
     return response.json();
     })
@@ -238,8 +238,8 @@ function validarUser(email, password) {
                headers: myHeaders,
                cache: 'default' };
 
-    //fetch('http://mipedido.hierrodiseno.com/api/getproducto?id='+id, miInit)
-    fetch('http://localhost:8000/api/getuser?email='+email, miInit)
+    fetch('http://mipedido.hierrodiseno.com/api/getproducto?id='+id, miInit)
+    //fetch('http://localhost:8000/api/getuser?email='+email, miInit)
     .then(function(response) {
         return response.json();
     })
