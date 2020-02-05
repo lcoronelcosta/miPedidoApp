@@ -23,7 +23,7 @@
   <body class="page">
     <script type="text/javascript" src="mobileui/mobileui.js"></script>
     <script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/consultas.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   
   
@@ -82,10 +82,9 @@
       <button class="icon ion-navicon-round" onclick="openMenu('menuDiscover')"></button>
     </div>
     <h1 class="title align-center">Mi Pedidos</h1>
-    <div class="right">
-      <span class="icon-badge text-small red radius padding">3</span>
-      <button class="icon ion-ios-cart-outline"></button>
-    </div>
+    <div class="right" onclick="openPage('carrito', functionOpenCar)" id="cant-carro5">
+        <!--Carga Ajax-->
+      </div>
   </div>
 
   <div class="header sub teal blue">
@@ -103,69 +102,17 @@
   <div class="content has-header grey-200">
     <div class="row align-center">
       <div class="col light-blue">
-        <h1 class="text-huge text-strong">$12.00</h1>
+        <h1 class="text-huge text-strong" id="subTotalCarrito"></h1>
         <p>SUBTOTAL</p>
       </div>
       <div class="col pink-400">
-        <h1 class="text-huge text-strong">$32.00</h1>
+        <h1 class="text-huge text-strong" id="totalCarrito"></h1>
         <p>TOTAL</p>
       </div>
     </div>
 
-    <div class="list">
-
-      <div class="item">
-        <div class="left">
-          <img class="avatar circle" src="/img/33.jpg">
-        </div>
-        <h2>Jeanette Fletcher</h2>
-        <p class="text-grey">+55 7979 325 655</p>
-        <div class="right">
-          <small class="text-grey">
-            5 min
-            <i class="icon ion-android-happy green"></i>
-          </small>
-        </div>
-      </div>
-      <div class="item">
-        <div class="left">
-          <img class="avatar circle" src="/img/53.jpg">
-        </div>
-        <h2>Emilio Dias</h2>
-        <p class="text-grey">+55 8989 325 655</p>
-        <div class="right">
-          <small class="text-grey">
-            12 min
-            <i class="icon ion-android-sad text-red"></i>
-          </small>
-        </div>
-      </div>
-      <div class="item">
-        <div class="left">
-          <img class="avatar circle" src="/img/96.jpg">
-        </div>
-        <h2>Marcos Paulo</h2>
-        <p class="text-grey">+55 1245 325 655</p>
-        <div class="right">
-          <small class="text-grey">
-            32 min
-            <i class="icon ion-android-sad red"></i>
-          </small>
-        </div>
-      </div>
-      <div class="item">
-        <div class="left">
-          <img class="avatar circle" src="/img/33.jpg">
-        </div>
-        <h2>Carter Hudson</h2>
-        <p class="text-grey">+55 8797 325 655</p>
-        <div class="right">
-          <small class="text-grey">
-            1h 12 min
-            <i class="icon ion-android-happy green"></i>
-          </small>
-        </div>
-      </div>
+    <div class="list" id="detalle-carrito">
+      <!---->
     </div>
   </div>
     </div>

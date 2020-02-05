@@ -20,17 +20,17 @@
     </style>
 </head>
 
-  <body class="padding grey-100 has-header has-sub-header">
-    <div>
+  <body>
+    <div class="padding grey-100 has-header has-sub-header">
       
-    </div>
+    
     <script type="text/javascript" src="mobileui/mobileui.js"></script>
     <script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript" src="js/swiper.js"></script>
-    <script type="text/javascript" src="js/consultas.js"></script>
+    <script type="text/javascript" src="js/home.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
     <div class="menu teal-900 blend-multiply" id="menuDiscover" style="background-image:url(/img/nature1.jpg)">
       <div class="cover align-center" id="perfil">
         <!-- Carga mediante Ajax -->
@@ -82,9 +82,8 @@
         <button class="icon ion-navicon-round" onclick="openMenu('menuDiscover')"></button>
       </div>
       <h1 class="title align-center">Mi Pedidos</h1>
-      <div class="right" onclick="openPage('carrito')">
-        <span class="icon-badge text-small red radius padding">0</span>
-        <button class="icon ion-ios-cart-outline"></button>
+      <div class="right" onclick="openPage('carrito', functionopenCar)" id="cant-carro1">
+        <!--Carga Ajax-->
       </div>
     </div>
     <!--Fin Mi Pedido Header-->
@@ -105,6 +104,7 @@
     <!--Fin Swiper-->
   <div id="categorias">
     <!-- Carga mediante Ajax -->
+  </div>
   </div>
 </body>
 </html>

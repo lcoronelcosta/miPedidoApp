@@ -23,7 +23,7 @@
   <body class="page">
     <script type="text/javascript" src="mobileui/mobileui.js"></script>
     <script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/consultas.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     
   
@@ -83,10 +83,9 @@
       <button class="icon ion-navicon-round" onclick="openMenu('menuDiscover')"></button>
     </div>
     <h1 class="title align-center">Mi Pedidos</h1>
-    <div class="right">
-      <span class="icon-badge text-small red radius padding">0</span>
-      <button class="icon ion-ios-cart-outline"></button>
-    </div>
+    <div class="right" onclick="openPage('carrito', functionOpenCar)" id="cant-carro3">
+        <!--Carga Ajax-->
+      </div>
   </div>
   <div class="header sub teal blue">
     <div class="left">
